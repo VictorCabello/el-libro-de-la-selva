@@ -1,0 +1,35 @@
+[project]
+name = "el-libro-de-la-selva"
+version = "0.1.0"
+description = "Document ingestion and chat system using hierarchical clustering"
+requires-python = ">=3.10"
+dependencies = [
+    "langchain-community",
+    "langchain-text-splitters",
+    "langchain-ollama",
+    "langchain-qdrant",
+    "numpy",
+    "scikit-learn",
+]
+
+[project.scripts]
+el-libro-de-la-selva-ingestor = "el_libro_de_la_selva.cli.ingestor:main"
+el-libro-de-la-selva-chat = "el_libro_de_la_selva.cli.chat:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"
+markers = []
